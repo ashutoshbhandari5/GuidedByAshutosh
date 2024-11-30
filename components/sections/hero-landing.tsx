@@ -25,7 +25,7 @@ export default async function HeroLanding() {
       <div className="flex justify-center">
         <Image
           className="object-cover object-center dark:opacity-85 dark:invert"
-          src="/_static/blog/blog-post-2.jpg"
+          src="/_static/blog/background.jpg"
           alt="preview landing"
           width={800}
           height={800}
