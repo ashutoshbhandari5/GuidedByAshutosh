@@ -3,7 +3,6 @@ import { clsx, type ClassValue } from "clsx";
 import ms from "ms";
 import { twMerge } from "tailwind-merge";
 
-import { env } from "@/env.mjs";
 import { siteConfig } from "@/config/site";
 
 export function cn(...inputs: ClassValue[]) {
@@ -13,7 +12,6 @@ export function cn(...inputs: ClassValue[]) {
 export function constructMetadata({
   title = siteConfig.name,
   description = siteConfig.description,
-  image = siteConfig.ogImage,
   icons = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNvZGUteG1sIj48cGF0aCBkPSJtMTggMTYgNC00LTQtNCIvPjxwYXRoIGQ9Im02IDgtNCA0IDQgNCIvPjxwYXRoIGQ9Im0xNC41IDQtNSAxNiIvPjwvc3ZnPg==",
   noIndex = false,
 }: {
@@ -46,7 +44,6 @@ export function constructMetadata({
     openGraph: {
       type: "website",
       locale: "en_US",
-      url: siteConfig.url,
       title,
       description,
       siteName: title,
@@ -55,12 +52,9 @@ export function constructMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: [image],
       creator: "@miickasmt",
     },
     icons,
-    metadataBase: new URL(siteConfig.url),
-    manifest: `${siteConfig.url}/site.webmanifest`,
     ...(noIndex && {
       robots: {
         index: false,
@@ -77,10 +71,6 @@ export function formatDate(input: string | number): string {
     day: "numeric",
     year: "numeric",
   });
-}
-
-export function absoluteUrl(path: string) {
-  return `${env.NEXT_PUBLIC_APP_URL}${path}`;
 }
 
 // Utils from precedent.dev
@@ -149,10 +139,6 @@ export const truncate = (str: string, length: number) => {
 export const getBlurDataURL = async (url: string | null) => {
   if (!url) {
     return "data:image/webp;base64,AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
-  }
-
-  if (url.startsWith("/_static/")) {
-    url = `${siteConfig.url}${url}`;
   }
 
   try {

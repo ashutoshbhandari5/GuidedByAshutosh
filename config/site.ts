@@ -1,14 +1,9 @@
-import { SidebarNavItem, SiteConfig } from "types";
-import { env } from "@/env.mjs";
+import { SidebarNavItem } from "types";
 
-const site_url = env.NEXT_PUBLIC_APP_URL;
-
-export const siteConfig: SiteConfig = {
+export const siteConfig = {
   name: "Guided By Code",
   description:
     "Get your project off to an explosive start with SaaS Starter! Harness the power of Next.js 14, Prisma, Neon, Auth.js v5, Resend, React Email, Shadcn/ui and Stripe to build your next big thing.",
-  url: site_url,
-  ogImage: `${site_url}/_static/og.jpg`,
   links: {
     linkedin: "https://www.linkedin.com/in/ashutosh-bhandari-658325226/",
     twitter: "https://twitter.com/miickasmt",
