@@ -1,4 +1,5 @@
 import Image from "next/image";
+import mainBg from "@/assets/mainbg.png";
 
 export default async function HeroLanding() {
   return (
@@ -25,11 +26,10 @@ export default async function HeroLanding() {
       <div className="flex justify-center">
         <Image
           className="object-cover object-center dark:opacity-85 dark:invert"
-          src="/_static/blog/background.jpg"
+          src={mainBg}
           alt="preview landing"
           width={800}
           height={800}
-          priority={true}
         />
       </div>
     </section>
